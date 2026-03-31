@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from aravindwedsaarthi.vercel.app/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 30 Mar 2026 18:57:46 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Invitation</title>
+  <link rel="stylesheet" href="style5e1f.css?v=2">
+</head>
+
+<body>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-rings">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <p class="loader-text">Prasu weds Venky...</p>
+  </div>
+
+  <div id="main-content" class="hidden-content">
+
+    <!-- SECTION 1 -->
+    <div class="section-1">
+      <div class="wedding">
+        <img src="images/petals.png" alt="" />
+        <div class="title">
+          <h1>PRASANNA</h1>
+          <p class="weds">WEDS</p>
+          <h1>VENKAT</h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="section-2 ">
+      <div class="temple-wrapper">
+        <img src="images/uQ5GdDW5jaPT8LYNBYabSn2bj09e7d.png?width=1168&amp;height=12275" class="temple" alt="" />
+      </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="section-3">
+      <div class="invitation-card">
+
+        <div class="ganesha" style="margin-top: 100px;">ॐ श्री गणेशाय नम</div>
+
+        <div class="vinayagan">
+          <img src="images/ganesh.png" alt="" class="ganesh" style="margin-bottom: 50px; margin-top: 50px;" />
+        </div>
+
+        <div class="blessing">
+          With the heavenly blessings of <br />
+          Shri. Ayithireddy Satyanarayana Garu & Smt. Satyanarayanamma
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="invite-title">INVITE</div>
+
+        <div class="footer-text">
+          You to join us in the wedding celebrations of
+        </div>
+
+        <div class="name">PRASANNA</div>
+        <div class="and">&</div>
+        <div class="name">VENKAT</div>
+
+        <div class="sub-text">Daughter of</div>
+        <div class="parent-text">
+          Shri. Ayithireddy Ravikumar & Smt. Nagamani
+        </div>
+        <div class="divider"></div>
+      </div>
+      <div class="section-4">
+        <div class="venue-container">
+
+          <h2 class="venue-title">Wedding Details</h2>
+
+          <div class="venue-card">
+
+            <div class="event-block">
+              <h3>Wedding Ceremony (Sumuhurtham)</h3>
+              <p><strong>Date:</strong> Friday, 10th April 2026</p>
+              <p><strong>Time:</strong> 08:13 PM</p>
+              <p><strong>Occasion:</strong> Marriage Ceremony</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="event-block">
+              <h3>Dinner</h3>
+              <p><strong>Date:</strong> Friday, 10th April 2026</p>
+              <p><strong>Time:</strong> 7:00 PM onwards</p>
+              <p><strong>Location:</strong> At the Marriage Venue</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="event-block">
+              <h3>Venue</h3>
+              <p class="venue-address">
+                Margani seshayya savitramma convention <br>
+                NH-16, Kadiyapulanka
+              </p>
+
+              <a href="" target="_blank" class="map-btn">
+                View Location
+              </a>
+            </div>
+
+          </div>
+
+          <img src="images/nanivenky.png" class="wedding-photo">
+
+        </div>
+      </div>
+      <div class="countdown-section">
+        <img src="images/bottom-photo.png" alt="" class="temple2">
+
+        <div class="countdown-overlay">
+          <h2>The Wedding Countdown Begins</h2>
+          <div id="countdown"></div>
+          <p class="countdown-para">
+            Our families are excited that you are able to join us in celebrating what we hope will be one of the
+            happiest days of our lives.
+          </p>
+          <img src="images/moon.png" height="150px" style="margin-top: 60px;">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  </div> <!-- End #main-content -->
+
+</body>
+
+
+<!-- Mirrored from aravindwedsaarthi.vercel.app/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 30 Mar 2026 18:58:22 GMT -->
+
+</html>
+
+<script>
+  const weddingDate = new Date("April 10, 2026 20:13:00").getTime();
+
+  const countdownFunction = setInterval(function () {
+
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+      days + "d " + hours + "h "
+      + minutes + "m " + seconds + "s ";
+
+    if (distance < 0) {
+      clearInterval(countdownFunction);
+      document.getElementById("countdown").innerHTML = "🎉 Married 🎉";
+    }
+  }, 1000);
+
+  // Loader Script
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      const loader = document.getElementById('loader');
+      const mainContent = document.getElementById('main-content');
+
+      loader.style.opacity = '0';
+      loader.style.transition = 'opacity 0.8s ease';
+
+      setTimeout(function () {
+        loader.style.display = 'none';
+        mainContent.classList.remove('hidden-content');
+        mainContent.classList.add('visible-content');
+      }, 800);
+    }, 1500);
+  });
+</script>
