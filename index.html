@@ -23,7 +23,7 @@
       <div></div>
       <div></div>
     </div>
-    <p class="loader-text">Prasu weds Venky...</p>
+    <p class="loader-text">prasu weds venky...</p>
   </div>
 
   <div id="main-content" class="hidden-content">
@@ -51,15 +51,15 @@
     <div class="section-3">
       <div class="invitation-card">
 
-        <div class="ganesha" style="margin-top: 100px;">ॐ श्री गणेशाय नम</div>
+        <div class="ganesha" style="margin-top: 100px;">ఓం శ్రీ గణేశాయ నమః</div>
 
         <div class="vinayagan">
           <img src="images/ganesh.png" alt="" class="ganesh" style="margin-bottom: 50px; margin-top: 50px;" />
         </div>
 
         <div class="blessing">
-          With the heavenly blessings of <br />
-          Shri. Ayithireddy Satyanarayana Garu & Smt. Satyanarayanamma
+          With the blessings of <br />
+          Shri. Ayitireddy Satyanarayana Garu (late) & Smt. Satyanarayanamma
         </div>
 
         <div class="divider"></div>
@@ -74,42 +74,46 @@
         <div class="and">&</div>
         <div class="name">VENKAT</div>
 
-        <div class="sub-text">Daughter of</div>
+        <div class="sub-text">prasanna - daughter of</div>
         <div class="parent-text">
-          Shri. Ayithireddy Ravikumar & Smt. Nagamani
+          shri. ayitireddy ravikumar & smt. nagamani
+        </div>
+        <div class="sub-text">venkat - son of</div>
+        <div class="parent-text">
+          shri. karra rama krishna & smt. radha
         </div>
         <div class="divider"></div>
       </div>
       <div class="section-4">
         <div class="venue-container">
 
-          <h2 class="venue-title">Wedding Details</h2>
+          <h2 class="venue-title">wedding details</h2>
 
           <div class="venue-card">
 
             <div class="event-block">
-              <h3>Wedding Ceremony (Sumuhurtham)</h3>
-              <p><strong>Date:</strong> Friday, 10th April 2026</p>
+              <h3>wedding ceremony (sumuhurtham)</h3>
+              <p><strong>Date:</strong> friday, 10th april 2026</p>
               <p><strong>Time:</strong> 08:13 PM</p>
-              <p><strong>Occasion:</strong> Marriage Ceremony</p>
+              <p><strong>Occasion:</strong> marriage ceremony</p>
             </div>
 
             <div class="divider"></div>
 
             <div class="event-block">
-              <h3>Dinner</h3>
-              <p><strong>Date:</strong> Friday, 10th April 2026</p>
+              <h3>dinner</h3>
+              <p><strong>Date:</strong> friday, 10th april 2026</p>
               <p><strong>Time:</strong> 7:00 PM onwards</p>
-              <p><strong>Location:</strong> At the Marriage Venue</p>
+              <p><strong>Location:</strong> at the marriage venue</p>
             </div>
 
             <div class="divider"></div>
 
             <div class="event-block">
-              <h3>Venue</h3>
+              <h3>venue</h3>
               <p class="venue-address">
-                Margani seshayya savitramma convention <br>
-                NH-16, Kadiyapulanka
+                margani seshayya savitramma convention <br>
+                NH-16, kadiyapulanka
               </p>
 
               <a href="https://maps.app.goo.gl/KmqcWdvF5B2xLrvE9" target="_blank" class="map-btn">
@@ -119,7 +123,23 @@
 
           </div>
 
-          <img src="images/DSC02228.jpeg" class="wedding-photo">
+          <!-- PHOTO SLIDER -->
+          <div class="photo-slider" id="photoSlider">
+            <div class="slider-track" id="sliderTrack">
+              <div class="slide">
+                <img src="images/DSC02228.jpeg" alt="Wedding Photo 1" />
+              </div>
+              <div class="slide">
+                <img src="images/IMG_20260401_235352.jpg" alt="Wedding Photo 2" />
+              </div>
+            </div>
+
+            <!-- Dot indicators -->
+            <div class="slider-dots" id="sliderDots">
+              <span class="dot active" data-index="0"></span>
+              <span class="dot" data-index="1"></span>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -127,7 +147,7 @@
         <img src="images/bottom-photo.png" alt="" class="temple2">
 
         <div class="countdown-overlay">
-          <h2>The Wedding Countdown Begins</h2>
+          <h2>the wedding countdown begins</h2>
           <div id="countdown"></div>
           <p class="countdown-para">
             Our families are excited that you are able to join us in celebrating what we hope will be one of the
@@ -189,4 +209,130 @@
       }, 800);
     }, 1500);
   });
+  // ===== PHOTO SLIDER (infinite loop) =====
+  (function () {
+    const track = document.getElementById('sliderTrack');
+    const dots = document.querySelectorAll('#sliderDots .dot');
+    const slider = document.getElementById('photoSlider');
+    const total = 2;
+    let current = 1; // starts at 1 because index 0 = cloned last slide
+    let autoTimer;
+    let isTransitioning = false;
+
+    // --- Clone first and last slides for infinite illusion ---
+    const slides = track.querySelectorAll('.slide');
+    const firstClone = slides[0].cloneNode(true);
+    const lastClone = slides[total - 1].cloneNode(true);
+    track.appendChild(firstClone);   // goes after slide 2
+    track.insertBefore(lastClone, slides[0]); // goes before slide 1
+
+    // Jump to position 1 (real slide 1) instantly on load, no animation
+    track.style.transition = 'none';
+    track.style.transform = 'translateX(-100%)';
+
+    function updateDots(realIndex) {
+      dots.forEach(function (d) { d.classList.remove('active'); });
+      dots[realIndex].classList.add('active');
+    }
+
+    function goTo(index, skipTransition) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      current = index;
+      if (skipTransition) {
+        track.style.transition = 'none';
+      } else {
+        track.style.transition = 'transform 1s cubic-bezier(0.77, 0, 0.175, 1)';
+      }
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      // Update dots (real slides are at indices 1..total)
+      var realIndex = current - 1;
+      if (realIndex < 0) realIndex = total - 1;
+      if (realIndex >= total) realIndex = 0;
+      updateDots(realIndex);
+    }
+
+    // After each CSS transition: handle clone boundary silent resets
+    track.addEventListener('transitionend', function () {
+      isTransitioning = false;
+      if (current === total + 1) {
+        // Was at cloned-first (after slide 2) → silently jump to real slide 1
+        track.style.transition = 'none';
+        current = 1;
+        track.style.transform = 'translateX(-100%)';
+      } else if (current === 0) {
+        // Was at cloned-last (before slide 1) → silently jump to real slide 2
+        track.style.transition = 'none';
+        current = total;
+        track.style.transform = 'translateX(-' + (total * 100) + '%)';
+      }
+    });
+
+    function next() { goTo(current + 1, false); }
+    function prev() { goTo(current - 1, false); }
+
+    function startAuto() { autoTimer = setInterval(next, 3000); }
+    function stopAuto() { clearInterval(autoTimer); }
+
+    // --- Dot click (maps dot 0-3 → real index 1-4) ---
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        stopAuto();
+        var i = parseInt(this.getAttribute('data-index')) + 1;
+        goTo(i, false);
+        startAuto();
+      });
+    });
+
+    // --- Touch swipe ---
+    var touchStartX = 0;
+    var swipeThreshold = 50;
+
+    slider.addEventListener('touchstart', function (e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', function (e) {
+      var diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > swipeThreshold) {
+        stopAuto();
+        if (diff > 0) { next(); } else { prev(); }
+        startAuto();
+      }
+    }, { passive: true });
+
+    // --- Mouse drag swipe ---
+    var mouseStartX = 0;
+    var isDragging = false;
+
+    slider.addEventListener('mousedown', function (e) {
+      mouseStartX = e.clientX;
+      isDragging = true;
+      e.preventDefault();
+    });
+
+    slider.addEventListener('mouseup', function (e) {
+      if (!isDragging) return;
+      isDragging = false;
+      var diff = mouseStartX - e.clientX;
+      if (Math.abs(diff) > swipeThreshold) {
+        stopAuto();
+        if (diff > 0) { next(); } else { prev(); }
+        startAuto();
+      }
+    });
+
+    slider.addEventListener('mouseleave', function () {
+      isDragging = false;
+      startAuto();
+    });
+
+    slider.addEventListener('mouseenter', stopAuto);
+
+    // Kick off
+    startAuto();
+  })();
+  // ========================
+
+
 </script>
