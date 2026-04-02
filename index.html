@@ -15,6 +15,11 @@
 
 <body>
 
+  <!-- 🎵 BACKGROUND MUSIC -->
+  <audio id="bg-music" loop>
+    <source src="song1.mp3" type="audio/mpeg">
+  </audio>
+
   <!-- LOADER -->
   <div id="loader">
     <div class="loader-rings">
@@ -84,6 +89,8 @@
         </div>
         <div class="divider"></div>
       </div>
+
+      <!-- SECTION 4 -->
       <div class="section-4">
         <div class="venue-container">
 
@@ -161,16 +168,32 @@
 
   </div>
 
-  </div> <!-- End #main-content -->
-
 </body>
 
-
-<!-- Mirrored from aravindwedsaarthi.vercel.app/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 30 Mar 2026 18:58:22 GMT -->
-
-</html>
-
 <script>
+  // 🎵 MUSIC LOGIC
+  const music = document.getElementById("bg-music");
+
+  window.addEventListener("load", () => {
+    const playPromise = music.play();
+
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        document.addEventListener("click", startMusicOnce);
+        document.addEventListener("touchstart", startMusicOnce);
+        document.addEventListener("scroll", startMusicOnce);
+      });
+    }
+  });
+
+  function startMusicOnce() {
+    music.play();
+    document.removeEventListener("click", startMusicOnce);
+    document.removeEventListener("touchstart", startMusicOnce);
+    document.removeEventListener("scroll", startMusicOnce);
+  }
+
+  // COUNTDOWN
   const weddingDate = new Date("April 10, 2026 20:13:00").getTime();
 
   const countdownFunction = setInterval(function () {
@@ -336,3 +359,5 @@
 
 
 </script>
+
+</html>
